@@ -16,6 +16,7 @@ jobs:
 
             - name: hello world
               run: |
+                echo "TEST_VAR_0: ${{TEST_VAR_0}}"
                 echo 'Hello World!'
                 echo 'upload ${{github.sha}}' > record.txt
                 echo 'event: ${{ github.event_name }}, ref: ${{github.ref}}, head_ref: ${{github.head_ref}}, base_ref: ${{github.base_ref}}'
@@ -49,4 +50,4 @@ jobs:
             - name: upload artifact
               run: |
                 echo "Upload Artifact Successful"
-                echo ${{TEST_VAR_0}}
+
