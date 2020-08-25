@@ -4,6 +4,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+env:
+  TEST_VAR_0: test_0
 jobs:
     build:
         name: Build & Unit Test
@@ -43,6 +45,8 @@ jobs:
                 ls -R
                 cat record.txt
 
+
             - name: upload artifact
               run: |
                 echo "Upload Artifact Successful"
+                echo ${{TEST_VAR_0}}
