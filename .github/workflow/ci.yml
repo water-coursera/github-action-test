@@ -14,8 +14,8 @@ jobs:
 
             - name: hello world
               run: |
-                echo 'Hello World!'
-                echo 'upload ${{github.sha}}' > record.txt
+                echo "Hello World!"
+                echo "upload ${{github.sha}}" > record.txt
 
             - name: save build artifact
               if: ${{ github.event_name == 'push' && github.ref == 'master' }}
