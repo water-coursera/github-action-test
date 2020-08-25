@@ -24,6 +24,7 @@ jobs:
               with: 
                 name: record-file
                 path: record.txt
+                if-no-files-found: error
 
 
     deploy:
@@ -36,10 +37,11 @@ jobs:
               uses: actions/download-artifact@v2
               with:
                 name: record-file
-                path: record-download.txt
-
+            
             - name: display record file
-              run: cat record-download.txt
+              run: |
+                ls -R
+                cat record.txt
 
             - name: upload artifact
               run: |
