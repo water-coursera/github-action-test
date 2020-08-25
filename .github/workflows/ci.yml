@@ -19,7 +19,7 @@ jobs:
                 echo 'event: ${{ github.event_name }}, ref: ${{github.ref}}, head_ref: ${{github.head_ref}}, base_ref: ${{github.base_ref}}'
 
             - name: save build artifact
-              if: ${{ github.event_name == 'push' && github.ref == 'master' }}
+              if: ${{ github.event_name == 'push' && github.head_ref == 'master' }}
               uses: actions/upload-artifact@v2
               with: 
                 name: record-file
@@ -28,7 +28,7 @@ jobs:
 
     deploy:
         needs: [build]
-        if: ${{ github.event_name == 'push' && github.ref == 'master' }}
+        if: ${{ github.event_name == 'push' && github.head_ref == 'master' }}
         name: Auto Deploy
         runs-on: ubuntu-latest
         steps:
